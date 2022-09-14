@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <body>
+    <div class="d-flex align-items-center notification">
+      <img src="../img/exclamation.svg">
+      <div id="notification_text"></div>
+      <button type="button" class="mfp-close">×</button>
+    </div>
+    <script>
+    let block = document.querySelectorAll('.notification');
+    block.forEach(block => block.addEventListener('click', removeBlock));
+
+    function removeBlock() {
+      let block = this;
+      block.style.opacity = 1;
+      let blockId = setInterval(function() {
+        if (block.style.opacity > 0)
+          block.style.opacity -= 1;
+        else {
+        	clearInterval(blockId);
+        	block.remove();
+        }
+      }, 60)
+    }
+    </script>
+  </body>
+</html>
